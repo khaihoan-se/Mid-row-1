@@ -170,7 +170,6 @@ let dialog = {
 
 let titleFormData = document.getElementById('form-title').innerHTML = dialog.header.title;
 
-
 dialog.content.map((item) => {
 	let FormData = document.getElementById('form-data-render');
 	let { label, tag, type, id, icon, rules, name, options, note } = item;
@@ -198,7 +197,7 @@ dialog.content.map((item) => {
 					${NewRules.map(item => item.type === 'required' ? `<span class="formdata__body--input--input--required">*</span>` : '')}
 				</div>
 				${
-					note !== undefined ? `<div class="formdata__body--input--note">${note}</div>` : ''
+					note !== undefined ? `<div class="formdata__body--input--note"><b><i>${note}</i></b></div>` : ''
 				}
 			</div>
 		</div>
