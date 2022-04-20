@@ -161,7 +161,9 @@ let dialog = {
 				}
 			],
 			note: "Những xe tích truyền hình ảnh về Tổng Cục Đường Bộ yêu cầu tài xế và xe phải được xác minh mới được gán thông tin với nhau",
-			options: [],
+			options: [
+				{"value":"Phương tiện làm việc","text":"Phương tiện làm việc"},
+			],
 		}
 	]
 }
@@ -171,10 +173,11 @@ let titleFormData = document.getElementById('form-title').innerHTML = dialog.hea
 
 dialog.content.map((item) => {
 	let FormData = document.getElementById('form-data-render');
-	let { label, tag, type, id, icon, rules, name } = item;
+	let { label, tag, type, id, icon, rules, name, options, note } = item;
 	let	NewRules = rules || [];
+	let	NewOption = options || [];
 
-	if(label && icon !== undefined) {
+	if(label !== undefined) {
 		FormData.innerHTML += `
 		<div class="form-group">
 			<div class="formdata__body--input">
@@ -182,15 +185,25 @@ dialog.content.map((item) => {
 					<span>${label}</span>
 				</div>
 				<div class="formdata__body--input--input">
-					<i class="fa ${icon}"></i>
+					<i class="fa ${icon !== undefined ? icon : ''}"></i>
 
-					<input id="${id}" type="${type}" placeholder="${label}" name="${name}" tag="${tag}">
+					${
+						tag === "input"
+						? `<input type="${type}" name="${name}" id="${id}" class="form-control" placeholder="${label}">` 
+						: `<select name='${name}' id='${id}' class='form-control'>
+								${NewOption.map(item => `<option value='${item.value}'>${item.text}</option>`)}
+							</select>`
+					}
 					
 					${NewRules.map(item => item.type === 'required' ? `<span class="formdata__body--input--input--required">*</span>` : '')}
-	
 				</div>
+				${
+					note !== undefined ? `<div class="formdata__body--input--note">${note}</div>` : ''
+				}
 			</div>
 		</div>
-	`;
+		`;
 	}
-})
+});
+
+console.log(dialog.content)
