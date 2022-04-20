@@ -1,0 +1,268 @@
+// css navigator (Menu)
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 256px;
+    height: 100vh;
+    max-height: 100vh;
+    padding: 140px 0 72px;
+    background: #ffffff;
+    border-right: 1px solid #E4E4E4;
+    transition: all .5s;
+    &__top {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 140px;
+    }
+    &__pic{
+        &--mobile{
+            display: none;
+            transition: all .5s;
+        }
+    }
+    &__logo {
+        font-size: 0;
+    }
+
+    &__wrapper {
+        width: 100%;
+    }
+    &__text {
+        white-space: nowrap;
+        transition-delay: 2s;
+    }
+    &__list {
+        width: 100%;
+        li {
+            cursor: pointer;
+        }
+        &-active {
+            position: relative;
+            background-color: rgba(0,0,0,0.05);
+            &::before {
+                content: '';
+                width: 5px;
+                height: 100%;
+                background-color: #5f27ce;
+                display: inline-block;
+                position: absolute;
+                left: -2px;
+                border-radius: 5px;
+            }
+        }
+    }
+    &__item {
+        display: flex;
+        align-items: center;
+        height: 40px;
+        font-size: 14px;
+        font-weight: 600;
+        color: #808191;
+        transition: color .25s;
+        transition: all .25s;
+        position: relative;
+        padding: 0 20px;
+        cursor: pointer;
+        &:hover {
+            transform: translateX(10px);
+            transition: all .5s;
+            opacity: .4;
+        }
+        &-tools {
+            width: 100%;
+            padding: 0;
+            justify-content: space-between;
+        }
+        &-child {
+            display: flex;
+        }
+    }
+
+    &__tools {
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        padding: 0 20px 30px;
+        &-dot {
+            width: 20px;
+            height: 20px;
+            background-color: #e74c3c;
+            color: #1B1D21;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+    &__title {
+        color: $main-cl;
+        font-size: 14px;
+        margin-bottom: 30px;
+        font-weight: 600;
+        @include md {
+            font-size: 12px;
+        }
+    }
+
+    &__icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0;
+        width: 20px;
+        height: 20px;
+        margin-right: 16px;
+        font-size: 0;
+    }
+
+    &__open {
+        position: absolute;
+        right: -20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        background-color: #fff;
+        border: 1px solid #E4E4E4;
+        border-radius: 50%;
+        cursor: pointer;
+        img {
+            width: 15px;
+            height: 15px;
+            transform: rotate(-180deg);
+            opacity: .8;
+        }
+    }
+
+    // close
+
+    &--active {
+        width: 96px;
+        .sidebar__top {
+            .sidebar__pic--dektop {
+                display: none;
+                transition: all .5s;
+            }
+            .sidebar__pic--mobile {
+                display: block;
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        .sidebar__wrapper {
+            .sidebar__text {
+                display: none;
+                transition-delay: 2s;
+            }
+            .sidebar__icon {
+                margin-right: 0;
+            }
+            .sidebar__item {
+                justify-content: center;
+            }
+        } 
+
+        .sidebar__tools {
+            .sidebar__text {
+                display: none;
+                transition: all .5s;
+            }
+            .sidebar__icon {
+                margin-right: 0;
+            }
+            .sidebar__item {
+                position: relative;
+                justify-content: center;
+            }
+            .sidebar__tools-dot {
+                position: absolute;
+                width: 20px;
+                height: 20px;
+                font-size: 12px;
+                top: 5px;
+                right: 5px;
+                transition: all .5s;
+            }
+        }
+
+        .sidebar__open {
+            img {
+                transform: rotate(0deg);
+                transition: all .5s;
+            }
+        }
+    }
+
+    @include md {
+        width: 70px;
+        .sidebar__top {
+            .sidebar__pic--dektop {
+                display: none;
+            }
+            .sidebar__pic--mobile {
+                display: block;
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        .sidebar__wrapper {
+            .sidebar__text {
+                display: none;
+            }
+            .sidebar__icon {
+                margin-right: 0;
+            }
+            .sidebar__item {
+                justify-content: center;
+            }
+        } 
+
+        .sidebar__tools {
+            .sidebar__text {
+                display: none;
+            }
+            .sidebar__icon {
+                margin-right: 0;
+            }
+            .sidebar__item {
+                position: relative;
+                justify-content: center;
+            }
+            .sidebar__tools-dot {
+                position: absolute;
+                width: 20px;
+                height: 20px;
+                font-size: 12px;
+                top: 5px;
+                right: 5px;
+            }
+        }
+
+        .sidebar__open {
+            display: none;
+            img {
+                transform: rotate(0deg);
+            }
+        }
+    }
+    @include xs {
+        .sidebar {
+            width: 60px !important;
+        }
+        .sidebar__tools-dot {
+            right: 0 !important;
+            top: 0px !important;
+        }
+    }
+}

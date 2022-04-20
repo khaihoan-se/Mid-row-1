@@ -1,0 +1,164 @@
+// css header
+.header {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    @include sm {
+        height: 100px;
+        margin-top: 30px;
+    }
+    &__container {
+        width: 100%;
+        height: 100%;
+        padding-right: 50px;
+        padding-left: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        @include sm {
+            align-items: initial;
+            flex-direction: column;
+        }
+    }
+    &__menu {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &--list {
+            display: flex;
+            align-items: center;
+        }
+        &--item {
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 15px;
+            margin-right: 15px;
+            cursor: pointer;
+            @include sm {
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+            @include xs {
+                font-size: 12px;
+                margin-left: 5px;
+                margin-right: 5px;
+            }
+            &:hover {
+                position: relative;
+                &::before {
+                    content: '';
+                    width: 100%;
+                    height: 1px;
+                    background-color: $main-cl;
+                    display: inline-block;
+                    position: absolute;
+                    bottom: 0;
+                    border-radius: 10px;
+                    transition: all .5s;
+                }
+                .header__menu--text {
+                    transition: all .5s;
+                    color: $main-cl;
+                }
+            }
+        }
+        &--text {
+            font-size: 14px;
+            font-weight: 600;
+            color: #808191;
+            white-space: nowrap;
+        }
+    }
+    &__icon {
+        width: 24px;
+    }
+    &__img {
+        width: 100%;
+        height: 100%;
+        @include midimg();
+        border-radius: 10px;
+    }
+    .active {
+        position: relative;
+        &::before {
+            content: '';
+            width: 100%;
+            height: 1px;
+            background-color: $main-cl;
+            display: inline-block;
+            position: absolute;
+            bottom: 0;
+            border-radius: 10px;
+        }
+        .header__menu--text {
+            color: $main-cl;
+        }
+    }
+
+    &__tools {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @include sm {
+            margin-top: 10px;
+        }
+        &--list {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            margin-right: 10px;
+            margin-left: 10px;
+        }
+        &--item {
+            position: relative;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            margin-left: 10px;
+            margin-right: 10px;
+            box-shadow: 2px 9px 19px -3px rgba(0,0,0,0.4);
+            transition: all $t;
+            cursor: pointer;
+            @include xs {
+                width: 35px;
+                height: 35px;
+                margin-left: 7px;
+                margin-right: 7px;
+            }
+            &:hover {
+                transition: all $t;
+                box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.4);
+            }
+        }
+        &--link {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        &--dot {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 20px;
+            height: 20px;
+            background-color: #e74c3c;
+            color: #1B1D21;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}
